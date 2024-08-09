@@ -1,0 +1,26 @@
+O princípio de um protocolo de primário e backup em sistemas distribuídos é uma estratégia usada para garantir a disponibilidade e confiabilidade dos dados.
+Como funciona:
+
+    Primário (Primary):
+        É o servidor principal que recebe e processa todas as requisições dos clientes.
+        Todas as operações de escrita e atualização dos dados são feitas inicialmente aqui.
+
+    Backup:
+        São réplicas do servidor primário que mantêm cópias atualizadas dos dados.
+        Eles ficam em modo de espera e não processam diretamente as requisições dos clientes.
+
+Processo:
+
+    Operação de Escrita:
+        Quando o cliente faz uma alteração nos dados, o primário executa a operação e, em seguida, replica essa alteração para os backups.
+        Apenas depois que a alteração é confirmada nos backups, o primário considera a operação concluída e responde ao cliente.
+
+    Falha do Primário:
+        Se o primário falha, um dos backups assume automaticamente o papel de primário.
+        O sistema continua a operar normalmente, garantindo que os dados permaneçam disponíveis e consistentes.
+
+Resumo:
+
+O protocolo de primário e backup garante que, mesmo se um servidor falhar, 
+o sistema continue funcionando sem perda de dados ou interrupção significativa, 
+porque há sempre um backup pronto para assumir o controle.
